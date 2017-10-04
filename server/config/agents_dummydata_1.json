@@ -1,0 +1,30 @@
+[
+    {
+        "id" : 4711,
+        "name" : "Agent_1",
+        "controller" : 1,
+        "online": true,
+        "enabled": false
+    },
+    {
+        "id" : 4712,
+        "name" : "Agent_2",
+        "controller" : 1,
+        "online": true,
+        "enabled": true
+    },
+    {
+        "id" : 4713,
+        "name" : "Agent_3",
+        "controller" : 1,
+        "online": false,
+        "enabled": false
+    },
+    {
+        "id" : 4714,
+        "name" : "Agent_4",
+        "controller" : 2,
+        "online": true,
+        "enabled": true
+    }
+]
