@@ -1,0 +1,11 @@
+{
+  "name": "server",
+  "version": "0.0.1",
+  "description": "TFS XAML build agent monitor server app",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Markus Lösch <markusloesch@gmail.com>",
+  "license": "WTFPL"
+}
