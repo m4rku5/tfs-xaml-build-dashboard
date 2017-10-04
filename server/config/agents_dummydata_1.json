@@ -19,12 +19,5 @@
         "controller" : 1,
         "online": false,
         "enabled": false
-    },
-    {
-        "id" : 4714,
-        "name" : "Agent_4",
-        "controller" : 2,
-        "online": true,
-        "enabled": true
     }
 ]
