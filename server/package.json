@@ -4,8 +4,21 @@
   "description": "TFS XAML build agent monitor server app",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "start": "nodemon src/app.js --exec  \"npm run lint && node\"",
+    "lint": "eslint src/**/*.js"
   },
   "author": "Markus Lösch <markusloesch@gmail.com>",
-  "license": "WTFPL"
+  "license": "WTFPL",
+  "dependencies": {
+    "eslint": "^4.8.0",
+    "express": "^4.16.1",
+    "nodemon": "^1.12.1"
+  },
+  "devDependencies": {
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-node": "^5.2.0",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1"
+  }
 }
