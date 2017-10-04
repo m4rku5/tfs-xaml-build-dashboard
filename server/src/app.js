@@ -12,7 +12,7 @@ app.get('/controllers', (req, res) => {
   }
 })
 
-app.get('/controllers/:agentId', function (req, res) {
+app.get('/controllers/:agentId', (req, res) => {
   try {
     const agents = JSON.parse(fs.readFileSync(`config/agents_dummydata_${req.params.agentId}.json`, 'utf8'))
     res.send(agents)
