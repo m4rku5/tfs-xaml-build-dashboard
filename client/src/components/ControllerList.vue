@@ -1,30 +1,37 @@
 <template>
-    <v-layout row>
-    <v-flex xs12 sm6 offset-sm3>
-        <v-toolbar class="indigo" dark>
-          <v-toolbar-title>
-            XAML Build Status
-          </v-toolbar-title>
-        </v-toolbar>
-        <v-card>
+<v-container class="grid-container" grid-list-md>
+  <v-layout row wrap>
+    <v-flex xs12>
+      <v-toolbar class="indigo" dark>
+        <v-toolbar-title>
+          XAML Build Status
+        </v-toolbar-title>
+      </v-toolbar>
+    </v-flex>
+    <v-flex xs12 sm6 md4 display-flex>
+      <v-card>
         <v-list>
-        <v-subheader>
-          <span class="controller-status">
-            Controller Status
-          </span>
+          <v-subheader>
+            <span class="controller-status">
+              Controller Status
+            </span>
           </v-subheader>
           <v-list-tile avatar>
-            <v-list-tile-action>
+            <v-list-tile-action>  
               <v-icon color="green">
                 check_circle
               </v-icon>
             </v-list-tile-action>
             <v-list-tile-content>
-              <v-list-tile-title>BUILDCONTROLLER_TFS12</v-list-tile-title>
-              <v-list-tile-sub-title>Online</v-list-tile-sub-title>
+              <v-list-tile-title>
+                BUILDCONTROLLER_TFS12
+              </v-list-tile-title>
+              <v-list-tile-sub-title>
+                Online
+              </v-list-tile-sub-title>
             </v-list-tile-content>
           </v-list-tile>
-        <v-divider></v-divider>
+          <v-divider></v-divider>
           <v-subheader>
             <span class="controller-status">
               Agent Status
@@ -46,7 +53,7 @@
               </v-list-tile-sub-title>
             </v-list-tile-content>
           </v-list-tile>
-          
+            
           <v-list-tile avatar>
             <v-list-tile-action>
               <v-icon color="green">
@@ -80,8 +87,220 @@
           </v-list-tile>
         </v-list>
       </v-card>
+
+      </v-flex>
+      <v-flex xs12 sm6 md4 display-flex>
+
+      <v-card>
+        <v-list>
+          <v-subheader>
+            <span class="controller-status">
+              Controller Status
+            </span>
+          </v-subheader>
+          <v-list-tile avatar>
+            <v-list-tile-action>  
+              <v-icon color="green">
+                check_circle
+              </v-icon>
+            </v-list-tile-action>
+            <v-list-tile-content>
+              <v-list-tile-title>
+                BUILDCONTROLLER_TFS12
+              </v-list-tile-title>
+              <v-list-tile-sub-title>
+                Online
+              </v-list-tile-sub-title>
+            </v-list-tile-content>
+          </v-list-tile>
+          <v-divider></v-divider>
+          <v-subheader>
+            <span class="controller-status">
+              Agent Status
+            </span>
+          </v-subheader>
+          
+          <v-list-tile avatar>
+            <v-list-tile-action>
+              <v-icon color="red">
+                error
+              </v-icon>
+            </v-list-tile-action>
+            <v-list-tile-content>
+              <v-list-tile-title>
+                Agent TFS 52 SYS Y
+              </v-list-tile-title>
+              <v-list-tile-sub-title>
+                Online
+              </v-list-tile-sub-title>
+            </v-list-tile-content>
+          </v-list-tile>
+            
+          <v-list-tile avatar>
+            <v-list-tile-action>
+              <v-icon color="green">
+                check_circle
+              </v-icon>
+            </v-list-tile-action>
+            <v-list-tile-content>
+              <v-list-tile-title>
+                Agent TFS 21 SYS X
+              </v-list-tile-title>
+              <v-list-tile-sub-title>
+                Offline
+              </v-list-tile-sub-title>
+            </v-list-tile-content>
+          </v-list-tile>
+              <v-list-tile avatar>
+            <v-list-tile-action>
+              <v-icon color="red">
+                error
+              </v-icon>
+            </v-list-tile-action>
+            <v-list-tile-content>
+              <v-list-tile-title>
+                Agent TFS 52 SYS Y
+              </v-list-tile-title>
+              <v-list-tile-sub-title>
+                Online
+              </v-list-tile-sub-title>
+            </v-list-tile-content>
+          </v-list-tile>
+            
+          <v-list-tile avatar>
+            <v-list-tile-action>
+              <v-icon color="green">
+                check_circle
+              </v-icon>
+            </v-list-tile-action>
+            <v-list-tile-content>
+              <v-list-tile-title>
+                Agent TFS 21 SYS X
+              </v-list-tile-title>
+              <v-list-tile-sub-title>
+                Offline
+              </v-list-tile-sub-title>
+            </v-list-tile-content>
+          </v-list-tile>
+
+          <v-list-tile avatar>
+            <v-list-tile-action>
+              <v-icon color="orange darken-1">
+                warning
+              </v-icon>
+            </v-list-tile-action>
+            <v-list-tile-content>
+              <v-list-tile-title>
+                Default Agent TFS 43 SYS X
+              </v-list-tile-title>
+              <v-list-tile-sub-title>
+                Disabled
+              </v-list-tile-sub-title>
+            </v-list-tile-content>
+          </v-list-tile>
+        </v-list>
+      </v-card>
+
+      </v-flex>
+      <v-flex xs12 sm6 md4 display-flex>
+
+
+      <v-card>
+        <v-list>
+          <v-subheader>
+            <span class="controller-status">
+              Controller Status
+            </span>
+          </v-subheader>
+          <v-list-tile avatar>
+            <v-list-tile-action>  
+              <v-icon color="green">
+                check_circle
+              </v-icon>
+            </v-list-tile-action>
+            <v-list-tile-content>
+              <v-list-tile-title>
+                BUILDCONTROLLER_TFS12
+              </v-list-tile-title>
+              <v-list-tile-sub-title>
+                Online
+              </v-list-tile-sub-title>
+            </v-list-tile-content>
+          </v-list-tile>
+          <v-divider></v-divider>
+          <v-subheader>
+            <span class="controller-status">
+              Agent Status
+            </span>
+          </v-subheader>
+                    <v-list-tile avatar>
+            <v-list-tile-action>  
+              <v-icon color="green">
+                check_circle
+              </v-icon>
+            </v-list-tile-action>
+            <v-list-tile-content>
+              <v-list-tile-title>
+                Default agent TFS 2 SYS 
+              </v-list-tile-title>
+              <v-list-tile-sub-title>
+                Online
+              </v-list-tile-sub-title>
+            </v-list-tile-content>
+          </v-list-tile>
+          <v-list-tile avatar>
+            <v-list-tile-action>
+              <v-icon color="red">
+                error
+              </v-icon>
+            </v-list-tile-action>
+            <v-list-tile-content>
+              <v-list-tile-title>
+                Agent TFS 52 SYS Y
+              </v-list-tile-title>
+              <v-list-tile-sub-title>
+                Online
+              </v-list-tile-sub-title>
+            </v-list-tile-content>
+          </v-list-tile>
+            
+          <v-list-tile avatar>
+            <v-list-tile-action>
+              <v-icon color="green">
+                check_circle
+              </v-icon>
+            </v-list-tile-action>
+            <v-list-tile-content>
+              <v-list-tile-title>
+                Agent TFS 21 SYS X
+              </v-list-tile-title>
+              <v-list-tile-sub-title>
+                Offline
+              </v-list-tile-sub-title>
+            </v-list-tile-content>
+          </v-list-tile>
+
+          <v-list-tile avatar>
+            <v-list-tile-action>
+              <v-icon color="orange darken-1">
+                warning
+              </v-icon>
+            </v-list-tile-action>
+            <v-list-tile-content>
+              <v-list-tile-title>
+                Default Agent TFS 43 SYS X
+              </v-list-tile-title>
+              <v-list-tile-sub-title>
+                Disabled
+              </v-list-tile-sub-title>
+            </v-list-tile-content>
+          </v-list-tile>
+        </v-list>
+      </v-card>
+
     </v-flex>
   </v-layout>
+</v-container>
 </template>
 
 <script>
@@ -102,4 +321,11 @@
     font-weight: bold;
   }
 
+  .grid-container {
+    margin: 0px;
+  }
+
+  .display-flex {
+    display: flex;
+  }
 </style>
