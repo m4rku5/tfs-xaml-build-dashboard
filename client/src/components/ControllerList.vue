@@ -24,7 +24,7 @@
             </v-list-tile-action>
             <v-list-tile-content>
               <v-list-tile-title>
-                BUILDCONTROLLER_TFS12
+                BUILDCONTROLLER_TFS12asdfjasdlöfjas
               </v-list-tile-title>
               <v-list-tile-sub-title>
                 Online
@@ -323,9 +323,14 @@
 
   .grid-container {
     margin: 0px;
+    max-width: 100%;
   }
 
   .display-flex {
     display: flex;
+  }
+
+  .card {
+    width: 100%;
   }
 </style>
