@@ -1,7 +1,7 @@
 {
-  "name": "client",
-  "version": "1.0.0",
-  "description": "TFS XAML build agent monitor client app",
+  "name": "tfs-xaml-build-machine-monitor-client",
+  "version": "0.0.1",
+  "description": "TFS XAML build controller + agent monitor client app",
   "author": "Markus Lösch <markusloesch@gmail.com>",
   "private": true,
   "scripts": {
