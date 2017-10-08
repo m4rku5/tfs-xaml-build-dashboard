@@ -1,23 +1,23 @@
+const xamlBuild = require('../tfs_api/XamlBuild')
+const config = require('../config/config')
+
 const express = require('express')
 const app = express()
 
-const fs = require('fs')
-
 app.get('/controllers', (req, res) => {
   try {
-    const controllers = JSON.parse(fs.readFileSync('config/controllers_dummydata.json', 'utf8'))
-    res.send(controllers)
+    console.log(`tfsuri: ${config.tfsUri}`)
+    res.send(xamlBuild.getBuildControllers(config.tfsUri))
   } catch (err) {
     res.status(400).send(`Cannot get controllers: ${err.message}`)
   }
 })
 
-app.get('/controllers/:agentId', (req, res) => {
+app.get('/controllers/:controllerId', (req, res) => {
   try {
-    const agents = JSON.parse(fs.readFileSync(`config/agents_dummydata_${req.params.agentId}.json`, 'utf8'))
-    res.send(agents)
+    res.send(xamlBuild.getBuildAgents(config.tfsUri, req.params.controllerId))
   } catch (err) {
-    res.status(400).send(`Cannot get agents for controller with Id ${req.params.agentId}: ${err.message}`)
+    res.status(400).send(`Cannot get agents for controller with Id ${req.params.controllerId}: ${err.message}`)
   }
 })
 
