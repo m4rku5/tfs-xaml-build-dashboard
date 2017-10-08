@@ -21,5 +21,5 @@ try
 }
 catch
 {
-    Write-Output "Error while querying XAML controllers: $_"   
+    Write-Error "Error while querying XAML controllers: $_"   
 }

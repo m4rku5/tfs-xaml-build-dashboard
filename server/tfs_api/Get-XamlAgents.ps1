@@ -5,10 +5,25 @@ Param
     [ValidateNotNullOrEmpty()]
     [string]$TfsUri, 
 
-    [Parameter(Mandatory = $true)]
+    [Parameter(Mandatory = $false)]
     [ValidateNotNullOrEmpty()]
-    [string]$ControllerUri
+    [string]$ControllerUri,
+    
+    [Parameter(Mandatory = $false)]
+    [ValidateNotNullOrEmpty()]
+    [string]$ControllerId
 )
+
+if (-not $ControllerUri -and -not $ControllerId)
+{
+    Write-Error "No ControllerUri or ControllerId of a XAML controller was given!"
+    return
+}
+
+if ($ControllerId)
+{
+    $ControllerUri = "vstfs:///Build/Agent/$ControllerId"
+}
 
 try
 {
@@ -27,5 +42,5 @@ try
 }
 catch
 {
-    Write-Output "Error while querying XAML agents: $_"   
+    Write-Error "Error while querying XAML agents: $_"   
 }
