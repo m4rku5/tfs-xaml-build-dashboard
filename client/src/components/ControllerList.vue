@@ -9,7 +9,7 @@
       </v-toolbar>
     </v-flex>
 
-    <v-flex xs12 sm6 md4 display-flex v-for="id in controllerIds" v-bind:key="id" >
+    <v-flex xs12 sm6 md4 lg3 xl2 display-flex v-for="id in controllerIds" v-bind:key="id" >
       <controller-card :controller-id="id"></controller-card>
     </v-flex>
     
@@ -24,7 +24,7 @@
     name: 'ControllerList',
     data () {
       return {
-        controllerIds: [12, 13, 14, 15]
+        controllerIds: [21, 35, 13, 40, 26]
       }
     },
     components: {
