@@ -9,16 +9,16 @@
           </v-subheader>
           <v-list-tile avatar>
             <v-list-tile-action>  
-              <v-icon color="green">
-                check_circle
+              <v-icon :color="colorForState(controller.status)">
+                {{ iconforState(controller.status) }}
               </v-icon>
             </v-list-tile-action>
             <v-list-tile-content>
               <v-list-tile-title>
-                {{controllerId}}
+                {{ controller.name }}
               </v-list-tile-title>
               <v-list-tile-sub-title>
-                Online
+                {{ controller.status }}
               </v-list-tile-sub-title>
             </v-list-tile-content>
           </v-list-tile>
@@ -32,8 +32,8 @@
           
           <v-list-tile avatar v-for="agent in agents" v-bind:key="agent.name">
             <v-list-tile-action>
-              <v-icon :color="agent.color">
-                {{ agent.icon }}
+              <v-icon :color="colorForState(agent.status)">
+                {{ iconforState(agent.status) }}
               </v-icon>
             </v-list-tile-action>
             <v-list-tile-content>
@@ -59,26 +59,51 @@
     props: ['controllerId'],
     data () {
       return {
+        controller: {
+          name: 'Controller XY',
+          status: 'Online'
+        },
         agents: [
-          {
-            name: 'Default Agent TFS 43 SYS X',
-            status: 'Online',
-            icon: 'check_circle',
-            color: 'green'
-          },
-          {
-            name: 'Agent TFS 52 SYS Y',
-            status: 'Offline',
-            icon: 'error',
-            color: 'red'
-          },
-          {
-            name: 'Default Agent TFS 99 SYS TF',
-            status: 'Disabled',
-            icon: 'warning',
-            color: 'orange darken-1'
-          }
+
         ]
+      }
+    },
+    computed: {
+    },
+    methods: {
+      colorForState: function (state) {
+        switch (state) {
+          case 'Offline':
+            return 'red'
+          case 'Online':
+            return 'green'
+          case 'Disabled':
+            return 'orange darken-1'
+          default:
+            return 'black'
+        }
+      },
+      iconforState: function (state) {
+        switch (state) {
+          case 'Offline':
+            return 'error'
+          case 'Online':
+            return 'check_circle'
+          case 'Disabled':
+            return 'warning'
+          default:
+            return 'black'
+        }
+      }
+    },
+    mounted () {
+      console.log('mounted')
+      let stausses = ['Online', 'Offline', 'Disabled']
+      for (var i = 0; i < this.controllerId / 5; i++) {
+        this.agents.push({
+          name: `Default Agent TFS 43 SY${i}`,
+          status: stausses[Math.floor(Math.random() * stausses.length)]
+        })
       }
     }
   }
