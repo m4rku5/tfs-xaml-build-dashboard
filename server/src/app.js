@@ -1,4 +1,4 @@
-const xamlBuild = require('../tfs_api/XamlBuild')
+const xamlBuild = require('../tfs_api/TfsBuildApiAdapter')
 const config = require('../config/config')
 
 const express = require('express')
