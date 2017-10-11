@@ -1,15 +1,16 @@
 const xamlBuild = require('../tfs_api/TfsBuildApiAdapter')
 const config = require('../config/config')
-
+const cors = require('cors')
 const express = require('express')
 const app = express()
+app.use(cors({origin: '*'}))
 
 app.get('/controllers', (req, res) => {
   try {
     console.log(`tfsuri: ${config.tfsUri}`)
     res.send(xamlBuild.getBuildControllers(config.tfsUri))
   } catch (err) {
-    res.status(400).send(`Cannot get controllers: ${err.message}`)
+    res.status(400).send(`Cannot get controllers: ${err.name}`)
   }
 })
 

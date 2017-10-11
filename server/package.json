@@ -10,6 +10,7 @@
   "author": "Markus Lösch <markusloesch@gmail.com>",
   "license": "WTFPL",
   "dependencies": {
+    "cors": "^2.8.4",
     "eslint": "^4.8.0",
     "express": "^4.16.1",
     "nodemon": "^1.12.1"
