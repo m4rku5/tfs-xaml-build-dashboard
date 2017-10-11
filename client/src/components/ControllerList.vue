@@ -9,8 +9,8 @@
       </v-toolbar>
     </v-flex>
 
-    <v-flex xs12 sm6 md4 lg3 xl2 display-flex v-for="id in controllerIds" v-bind:key="id" >
-      <controller-card :controller-id="id"></controller-card>
+    <v-flex xs12 sm6 md4 lg3 xl2 display-flex v-for="controller in controllers" v-bind:key="controller.Id" >
+      <controller-card :controller="controller"></controller-card>
     </v-flex>
     
   </v-layout>
@@ -19,16 +19,39 @@
 
 <script>
   import ControllerCard from './ControllerCard.vue'
-
+  import backendApi from '../api/TfsBuildBackendApi'
   export default {
     name: 'ControllerList',
     data () {
       return {
-        controllerIds: [21, 35, 13, 40, 26]
+        controllers: []
       }
     },
     components: {
       'controller-card': ControllerCard
+    },
+
+    async mounted () {
+      const controllerReq = await backendApi.getControllers()
+      const controllers = controllerReq.data
+
+      if (this.$route.query.controllerId) {
+        var queriedIds = []
+        if (Array.isArray(this.$route.query.controllerId)) {
+          queriedIds = this.$route.query.controllerId
+        } else {
+          queriedIds.push(this.$route.query.controllerId)
+        }
+        const actualControllersToQuery = []
+        controllers.forEach(function (controller) {
+          if (queriedIds.includes(controller.Id)) {
+            actualControllersToQuery.push(controller)
+          }
+        }, this)
+        this.controllers = actualControllersToQuery
+      } else {
+        this.controllers = controllers
+      }
     }
   }
 </script>

@@ -9,16 +9,16 @@
           </v-subheader>
           <v-list-tile avatar>
             <v-list-tile-action>  
-              <v-icon :color="colorForState(controller.status)">
-                {{ iconforState(controller.status) }}
+              <v-icon :color="colorForState(controller)">
+                {{ iconforState(controller) }}
               </v-icon>
             </v-list-tile-action>
             <v-list-tile-content>
               <v-list-tile-title>
-                {{ controller.name }}
+                {{ controller.Name }}
               </v-list-tile-title>
               <v-list-tile-sub-title>
-                {{ controller.status }}
+                {{ getReadableState(controller) }}
               </v-list-tile-sub-title>
             </v-list-tile-content>
           </v-list-tile>
@@ -30,22 +30,21 @@
             </span>
           </v-subheader>
           
-          <v-list-tile avatar v-for="agent in agents" v-bind:key="agent.name">
+          <v-list-tile avatar v-for="agent in agents" v-bind:key="agent.Id">
             <v-list-tile-action>
-              <v-icon :color="colorForState(agent.status)">
-                {{ iconforState(agent.status) }}
+              <v-icon :color="colorForState(agent)">
+                {{ iconforState(agent) }}
               </v-icon>
             </v-list-tile-action>
             <v-list-tile-content>
               <v-list-tile-title>
-                {{ agent.name }}
+                {{ agent.Name }}
               </v-list-tile-title>
               <v-list-tile-sub-title>
-                {{ agent.status }}
+                {{ getReadableState(agent) }}
               </v-list-tile-sub-title>
             </v-list-tile-content>
           </v-list-tile>
-
         </v-list>
       </v-card>
     </v-flex>
@@ -54,25 +53,19 @@
 </template>
 
 <script>
+  import backendApi from '../api/TfsBuildBackendApi'
   export default {
     name: 'ControllerCard',
-    props: ['controllerId'],
+    props: ['controller'],
     data () {
       return {
-        controller: {
-          name: 'Controller XY',
-          status: 'Online'
-        },
-        agents: [
-
-        ]
+        agents: []
       }
     },
-    computed: {
-    },
     methods: {
-      colorForState: function (state) {
-        switch (state) {
+      colorForState: function (machine) {
+        const strState = this.getReadableState(machine)
+        switch (strState) {
           case 'Offline':
             return 'red'
           case 'Online':
@@ -83,9 +76,12 @@
             return 'black'
         }
       },
-      iconforState: function (state) {
-        switch (state) {
+      iconforState: function (machine) {
+        const strState = this.getReadableState(machine)
+        switch (strState) {
           case 'Offline':
+            return 'error'
+          case 'Unavailable':
             return 'error'
           case 'Online':
             return 'check_circle'
@@ -94,17 +90,31 @@
           default:
             return 'black'
         }
+      },
+      getReadableState: function (machine) {
+        if (machine.Status === 2) {
+          return 'Offline'
+        }
+        if (machine.Status === 1 && !machine.Enabled) {
+          return 'Disabled'
+        }
+        if (machine.Status === 1 && machine.Enabled) {
+          return 'Online'
+        }
+      },
+      update: async function () {
+        // const vm = this
+        const agenetReq = await backendApi.getAgents(this.controller.Id)
+        this.agents = Array.isArray(agenetReq.data) ? agenetReq.data : [agenetReq.data]
+        console.log('agents: ' + this.agents.message)
       }
     },
-    mounted () {
-      console.log('mounted')
-      let stausses = ['Online', 'Offline', 'Disabled']
-      for (var i = 0; i < this.controllerId / 5; i++) {
-        this.agents.push({
-          name: `Default Agent TFS 43 SY${i}`,
-          status: stausses[Math.floor(Math.random() * stausses.length)]
-        })
-      }
+    mounted: function () {
+      console.log('mounted controller')
+      this.$nextTick(async function () {
+        this.update()
+        setInterval(this.update, 30000)
+      })
     }
   }
 </script>
