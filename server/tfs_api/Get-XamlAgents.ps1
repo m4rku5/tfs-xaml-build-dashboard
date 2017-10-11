@@ -22,7 +22,12 @@ if (-not $ControllerUri -and -not $ControllerId)
 
 if ($ControllerId)
 {
-    $ControllerUri = "vstfs:///Build/Agent/$ControllerId"
+    $ControllerUri = "vstfs:///Build/Controller/$ControllerId"
+}
+
+if ($ControllerUri)
+{
+    $ControllerId = $ControllerUri.Split('/')[-1]
 }
 
 try
@@ -33,6 +38,8 @@ try
     $tfs = [Microsoft.TeamFoundation.Client.TfsTeamProjectCollectionFactory]::GetTeamProjectCollection($TfsUri)
     $buildServer = $tfs.GetService([Microsoft.TeamFoundation.Build.Client.IBuildServer])
     $controllers = $buildServer.QueryBuildControllers($ControllerUri)
+    
+    $controllers = $controllers | Where { $_.Uri.ToString().EndsWith($ControllerId) }
     $agents = $controllers[0].Agents
 
     $agents | % { Add-Member -MemberType NoteProperty -Name "Id" -InputObject $_ -Value ($_.Uri.ToString().Split('/')[-1]) } 
