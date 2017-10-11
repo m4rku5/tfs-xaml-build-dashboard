@@ -15,7 +15,7 @@ function executePowershell (scriptPath, args) {
   console.log('Executing command: powershell.exe ', commandArgs)
   const psCommand = spawn('powershell.exe', commandArgs)
 
-  if (psCommand.stderr) {
+  if (psCommand.stderr === '') {
     throw new XamlBuildApiException(psCommand.stderr.toString())
   }
   return JSON.parse(psCommand.stdout.toString())
