@@ -1,6 +1,5 @@
 <template>
 <v-container class="grid-container" grid-list-md>
-  <v-layout row wrap>
     <v-flex xs12>
       <v-toolbar class="indigo" dark>
         <v-toolbar-title>
@@ -9,11 +8,12 @@
       </v-toolbar>
     </v-flex>
 
-    <v-flex xs12 sm6 md4 lg3 xl2 display-flex v-for="controller in controllers" v-bind:key="controller.Id" >
-      <controller-card :controller="controller"></controller-card>
-    </v-flex>
+    <article>
+      <section v-for="controller in controllers" v-bind:key="controller.Id" >
+        <controller-card :controller="controller"></controller-card>
+      </section>
+    </article>
     
-  </v-layout>
 </v-container>
 </template>
 
@@ -58,6 +58,30 @@
 
 <style scoped>
 
+  *,
+  *:before,
+  *:after {
+    box-sizing: border-box !important;
+  }
+
+  article {
+    column-width: 30em;
+    -moz-column-width: 30em;
+    -webkit-column-width: 30em;
+    
+    column-gap: 1em;
+    -moz-column-gap: 1em;
+    -webkit-column-gap: 1em;
+  }
+
+  section {
+    display: inline-block;
+    margin: 0.25rem;
+    padding: 1rem;
+    width: 100%;
+    background: #efefef;
+  }
+
   .controller-status {
     font-weight: bold;
   }
@@ -67,11 +91,8 @@
     max-width: 100%;
   }
 
-  .display-flex {
-    display: flex;
-  }
-
   .card {
     width: 100%;
   }
+
 </style>
