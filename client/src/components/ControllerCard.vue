@@ -106,14 +106,13 @@
         // const vm = this
         const agenetReq = await backendApi.getAgents(this.controller.Id)
         this.agents = Array.isArray(agenetReq.data) ? agenetReq.data : [agenetReq.data]
-        console.log('agents: ' + this.agents.message)
       }
     },
     mounted: function () {
       console.log('mounted controller')
       this.$nextTick(async function () {
         this.update()
-        setInterval(this.update, 30000)
+        setInterval(this.update, 300)
       })
     }
   }
