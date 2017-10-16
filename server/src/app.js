@@ -5,6 +5,8 @@ const express = require('express')
 const app = express()
 app.use(cors({origin: '*'}))
 
+console.log('Using NODE_ENV:  ' + process.env.NODE_ENV)
+
 app.get('/controllers', (req, res) => {
   try {
     console.log(`tfsuri: ${config.tfsUri}`)
