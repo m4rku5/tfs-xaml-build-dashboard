@@ -1,7 +1,7 @@
 <template>
 <v-container class="grid-container" grid-list-md>
     <v-flex xs12>
-      <v-toolbar class="indigo" dark>
+      <v-toolbar :height="45" class="controller-toolbar" flat>
         <v-toolbar-title>
           XAML Build Status
         </v-toolbar-title>
@@ -44,7 +44,7 @@
         }
         const actualControllersToQuery = []
         controllers.forEach(function (controller) {
-          if (queriedIds.includes(controller.Id)) {
+          if (queriedIds.includes(`${controller.Id}`)) {
             actualControllersToQuery.push(controller)
           }
         }, this)
@@ -77,7 +77,7 @@
   section {
     display: inline-block;
     margin: 0.25rem;
-    padding: 1rem;
+    padding: .3rem;
     width: 100%;
     background: #efefef;
   }
@@ -93,6 +93,16 @@
 
   .card {
     width: 100%;
+  }
+
+  .container.grid-list-md {
+    padding: 0px;
+  }
+
+  .controller-toolbar {
+    background-color: #0078d7 !important;
+    color: white !important; 
+    padding: 0px !important;
   }
 
 </style>
