@@ -112,7 +112,7 @@
       console.log('mounted controller')
       this.$nextTick(async function () {
         this.update()
-        setInterval(this.update, 300)
+        setInterval(this.update, 3000)
       })
     }
   }
