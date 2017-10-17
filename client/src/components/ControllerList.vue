@@ -75,11 +75,12 @@
   }
 
   section {
-    display: inline-block;
+    display: block;
     margin: 0.25rem;
     padding: .3rem;
     width: 100%;
     background: #efefef;
+    break-inside: avoid-column;
   }
 
   .controller-status {
